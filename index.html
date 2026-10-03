@@ -8,6 +8,52 @@
     <title>Library</title>
 </head>
 <body>
-    
+    <h1>Library</h1>
+    <button class="add">Add Book</button>
+    <div class="flex-container">
+        <div class="flex-child">
+            <div></div>
+            <div class="description">
+                <p>Harry Potter</p>
+                <p>Author: *****</p>
+                <p>Number of pages: *****</p>
+                <p>Read</p>
+                <p>Rating: ****</p>
+            </div>
+        </div>
+        <div class="flex-child">
+            <div></div>
+            <div class="description">
+                <p>Erased</p>
+                <p>Author: *****</p>
+                <p>Number of pages: *****</p>
+                <p>Read</p>
+                <p>Rating: ****</p>
+            </div>
+        </div>
+    </div>
+    <dialog>
+        <form>
+            <p>Add a book:</p>
+            <label for="title">Title:
+                <input type="text" class="title">
+            </label>
+            <label for="author">Author:
+                <input type="text" class="author">
+            </label>
+            <label for="number-of-pages">Number of Pages:
+                <input type="number" class="number-of-pages">
+            </label>
+            <label for="read">Book status:
+                <select name="read" id="read">
+                    <option value="read">Read</option>
+                    <option value="unread">Not yet read</option>
+                </select>
+            </label>
+            <label for="rating">Rating:
+                <input type="number" class="rating">
+            </label>
+        </form>
+    </dialog>
 </body>
 </html>
