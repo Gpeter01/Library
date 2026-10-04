@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <link rel="stylesheet" href="style.css">
     <title>Library</title>
 </head>
@@ -12,7 +12,7 @@
     <button class="add">Add Book</button>
     <div class="flex-container">
         <div class="flex-child">
-            <div></div>
+            <div class="book-cover harry-potter"></div>
             <div class="description">
                 <p>Harry Potter</p>
                 <p>Author: *****</p>
@@ -22,19 +22,20 @@
             </div>
         </div>
         <div class="flex-child">
-            <div></div>
+            <div class="book-cover erased"></div>
             <div class="description">
                 <p>Erased</p>
                 <p>Author: *****</p>
                 <p>Number of pages: *****</p>
-                <p>Read</p>
+                <p>Unread</p>
                 <p>Rating: ****</p>
             </div>
         </div>
     </div>
     <dialog>
         <form>
-            <p>Add a book:</p>
+            <button class="close">Exit</button>
+            <p class="intro">Add a book:</p>
             <label for="title">Title:
                 <input type="text" class="title">
             </label>
@@ -43,6 +44,9 @@
             </label>
             <label for="number-of-pages">Number of Pages:
                 <input type="number" class="number-of-pages">
+            </label>
+            <label for="number-of-volumes">Number of Volumes:
+                <input type="number" class="number-of-volumes">
             </label>
             <label for="read">Book status:
                 <select name="read" id="read">
@@ -53,6 +57,7 @@
             <label for="rating">Rating:
                 <input type="number" class="rating">
             </label>
+            <button class="save">Save</button>
         </form>
     </dialog>
 </body>
