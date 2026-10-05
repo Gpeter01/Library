@@ -91,7 +91,6 @@ save.addEventListener('click', (event) => {
     addClassName(bookCover, 'book-cover');
     append(container, bookCover);
     bookCover.style.backgroundImage = `url('./IMG_1656.JPG')`;
-    bookCover.style.backgroundSize = `cover`;
     
     // THE DESCRIPTION
     const description = createElement('div');
@@ -146,6 +145,12 @@ function exitForm(event) {
     event.preventDefault();
     const dialog = document.querySelector('dialog');
     dialog.close();
+
+    // RESET FORM
+    const form = document.querySelector('form');
+    form.reset();
+    const error = document.querySelector('.error');
+    error.textContent = '';
 } 
 const exit = document.querySelector('.close');
 exit.addEventListener('click', exitForm);
