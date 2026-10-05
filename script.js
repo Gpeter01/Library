@@ -26,6 +26,15 @@ function Book(title, author, numberOfPages, numberOfVolumes, status, rating) {
     this.rating = rating;
 }
 
+function checkAccurately(element) {
+    if (element === undefined || element === null || element === '') {
+        const error = document.querySelector('.error');
+        error.textContent = 'Fill the form accurately';
+        return true;
+    }  else {
+        return false;
+    }
+}
 function checkError(string) {
     if (typeof string !== 'string') {
         console.log('ERROR');
@@ -66,6 +75,11 @@ save.addEventListener('click', (event) => {
 
     newBook = new Book(title.value.trim(), author.value.trim(), pages.value.trim(), volumes.value, bookStatus.value, rating.value);
 
+    for (const property of Object.values(newBook)) {
+        if (checkAccurately(property)) {
+            return;
+        }
+    }
     // THE CONTAINER
     const container = createElement('div');
     addClassName(container, 'flex-child');
@@ -86,6 +100,7 @@ save.addEventListener('click', (event) => {
     
     // TITLE
     const titleContent = createElement('p');
+    addClassName(titleContent, 'book-title')
     append(description, titleContent); 
     addTextContent(titleContent, newBook.title);
     
@@ -123,4 +138,14 @@ save.addEventListener('click', (event) => {
     // RESET FORM
     const form = document.querySelector('form');
     form.reset();
-})
+    const error = document.querySelector('.error');
+    error.textContent = '';
+});
+
+function exitForm(event) {
+    event.preventDefault();
+    const dialog = document.querySelector('dialog');
+    dialog.close();
+} 
+const exit = document.querySelector('.close');
+exit.addEventListener('click', exitForm);
