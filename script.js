@@ -80,6 +80,9 @@ save.addEventListener('click', (event) => {
             return;
         }
     }
+    // CAPITALISE FIRST LETTER OF TITLE
+    newBook.title = newBook.title.slice(0, 1).toUpperCase() + newBook.title.slice(1);
+
     // THE CONTAINER
     const container = createElement('div');
     addClassName(container, 'flex-child');
