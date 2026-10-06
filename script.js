@@ -63,6 +63,8 @@ function addClassName(element, className) {
 }
 
 let newBook;
+const storedBook = ['harry-potter', 'erased'];
+
 const save = document.querySelector('.save');
 save.addEventListener('click', (event) => {
     event.preventDefault();
@@ -80,12 +82,16 @@ save.addEventListener('click', (event) => {
             return;
         }
     }
+    // IT'S CLASSNAME
+    const className = newBook.title.toLowerCase().split('').filter(element => element !== ' ').join('');
+
     // CAPITALISE FIRST LETTER OF TITLE
     newBook.title = newBook.title.slice(0, 1).toUpperCase() + newBook.title.slice(1);
 
     // THE CONTAINER
     const container = createElement('div');
     addClassName(container, 'flex-child');
+    addClassName(container, className);
     const flexContainer = document.querySelector('.flex-container');
     append(flexContainer, container);
 
@@ -131,6 +137,13 @@ save.addEventListener('click', (event) => {
     append(description, ratingContent); 
     addTextContent(ratingContent, `Rating: ${newBook.rating}`);
 
+    // BUTTON
+    const buttonContent = createElement('button');
+    append(description, buttonContent);
+    addTextContent(buttonContent, 'Delete');
+    addClassName(buttonContent, 'delete');
+    addClassName(buttonContent, className);
+
     // CLOSE MODAL
     const dialog = document.querySelector('dialog');
     dialog.close();
@@ -142,6 +155,9 @@ save.addEventListener('click', (event) => {
     form.reset();
     const error = document.querySelector('.error');
     error.textContent = '';
+
+    // ADD TO OUR LIBRARAY
+    storedBook.push(className);
 });
 
 function exitForm(event) {
@@ -155,5 +171,23 @@ function exitForm(event) {
     const error = document.querySelector('.error');
     error.textContent = '';
 } 
+
 const exit = document.querySelector('.close');
 exit.addEventListener('click', exitForm);
+
+const flexContainer = document.querySelector('.flex-container');
+flexContainer.addEventListener('click', (event) => {
+    if (event.target.classList[0] !== 'delete') {
+        return;
+    }
+    for (let i = 0; i < storedBook.length; i++) {
+        if (event.target.classList[1] === storedBook[i]) {
+            // DELETE THE DESIRED ELEMENT
+            const desiredDOMElement = document.querySelector(`div.${storedBook[i]}`);
+            desiredDOMElement.remove();
+
+            // REMOVE CLASSNAME FROM LIBRARY
+            storedBook.splice(i, 1);
+        }
+    }
+})
