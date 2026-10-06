@@ -13,7 +13,9 @@ setHeight();
 const dialogOpener = document.querySelector('.add');
 dialogOpener.addEventListener('click', () => {
     const dialog = document.querySelector('dialog');
+    const titleInput = document.querySelector('.title');
     dialog.showModal();
+    titleInput.focus();
 });
 
 // BOOK CONSTRUCTOR
