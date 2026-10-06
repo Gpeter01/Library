@@ -63,13 +63,18 @@ function addClassName(element, className) {
         element.classList.add(className);
     } 
 }
-
+function negateWord(status) {
+    if (status === 'Read') {
+        return 'Unread'
+    } else {
+        return 'Read';
+    }
+}
 let newBook;
 const storedBook = ['harry-potter', 'erased'];
 
 const save = document.querySelector('.save');
 save.addEventListener('click', (event) => {
-    event.preventDefault();
     const title = document.querySelector('.title');
     const author = document.querySelector('.author');
     const pages = document.querySelector('.number-of-pages');
@@ -129,15 +134,28 @@ save.addEventListener('click', (event) => {
     append(description, volumeContent); 
     addTextContent(volumeContent, `Number of volumes: ${newBook.numberOfVolumes}`);
 
-    // STATUS
-    const statusContent = createElement('p');
-    append(description, statusContent); 
-    addTextContent(statusContent, `${newBook.status}`);
-
     // RATING
     const ratingContent = createElement('p');
     append(description, ratingContent); 
     addTextContent(ratingContent, `Rating: ${newBook.rating}`);
+
+    // STATUS
+    const statusContent = createElement('p');
+    append(description, statusContent); 
+    statusContent.innerHTML = `Status: <b class='${className}'>${newBook.status}</b>`;
+
+    // STATUS BUTTON
+    const statusButton = createElement('button');
+    append(description, statusButton);
+    addTextContent(statusButton, negateWord(newBook.status));
+    addClassName(statusButton, 'book-status');
+    addClassName(statusButton, className);
+
+    // CLARIFY
+    const clarifier = createElement('p');
+    append(description, clarifier);
+    addTextContent(clarifier, '(Click to change book status)');
+    addClassName(clarifier, 'clarifier');
 
     // BUTTON
     const buttonContent = createElement('button');
@@ -162,7 +180,8 @@ save.addEventListener('click', (event) => {
     storedBook.push(className);
 });
 
-function exitForm(event) {
+const exit = document.querySelector('.close');
+exit.addEventListener('click', (event) => {
     event.preventDefault();
     const dialog = document.querySelector('dialog');
     dialog.close();
@@ -172,10 +191,7 @@ function exitForm(event) {
     form.reset();
     const error = document.querySelector('.error');
     error.textContent = '';
-} 
-
-const exit = document.querySelector('.close');
-exit.addEventListener('click', exitForm);
+});
 
 const flexContainer = document.querySelector('.flex-container');
 flexContainer.addEventListener('click', (event) => {
@@ -190,6 +206,21 @@ flexContainer.addEventListener('click', (event) => {
 
             // REMOVE CLASSNAME FROM LIBRARY
             storedBook.splice(i, 1);
+        }
+    }
+})
+flexContainer.addEventListener('click', (event) => {
+    if (event.target.classList[0] !== 'book-status') {
+        return;
+    };
+    const bookStatus = document.querySelectorAll('.book-status');
+    for (let i = 0; i < bookStatus.length; i++) {
+        if (event.target.classList[1] === bookStatus[i].classList[1]) {
+            const status = document.querySelector(`b.${event.target.classList[1]}`);
+            addTextContent(status, negateWord(status.textContent));
+
+            const button = document.querySelector(`button.${event.target.classList[1]}`);
+            addTextContent(button, negateWord(button.textContent));
         }
     }
 })
