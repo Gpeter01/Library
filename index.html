@@ -11,36 +11,44 @@
     <h1>Library</h1>
     <button class="add">Add Book</button>
     <div class="flex-container">
-        <div class="flex-child">
+        <div class="flex-child harry-potter">
             <div class="book-cover harry-potter"></div>
             <div class="description">
-                <p>Harry Potter</p>
-                <p>Author: *****</p>
-                <p>Number of pages: *****</p>
-                <p>Read</p>
-                <p>Rating: ****</p>
+                <p class="book-title">Harry Potter</p>
+                <p>Author: J.K. Rowling</p>
+                <p>Number of pages: 4,100 pages</p>
+                <p>Number of volumes: 7</p>
+                <p>Rating: 9.5</p>
+                <p>Status: <b class="harry-potter">Read</b></p>
+                <button class="book-status harry-potter">Unread</button>
+                <p class="clarifier">(Click to change book status)</p>
+                <button class="delete harry-potter">Delete</button>
             </div>
         </div>
-        <div class="flex-child">
+        <div class="flex-child erased">
             <div class="book-cover erased"></div>
             <div class="description">
-                <p>Erased</p>
-                <p>Author: *****</p>
-                <p>Number of pages: *****</p>
-                <p>Unread</p>
-                <p>Rating: ****</p>
+                <p class="book-title">Erased</p>
+                <p>Author: Kei Sanbe</p>
+                <p>Number of pages: 1,760 pages</p>
+                <p>Number of volumes: 8 </p>
+                <p>Rating: 8.8</p>
+                <p>Status: <b class="erased">Unread</b></p>
+                <button class="book-status erased">Unread</button>
+                <p class="clarifier">(Click to change book status)</p>
+                <button class="delete erased">Delete</button>
             </div>
         </div>
     </div>
     <dialog>
         <form>
-            <button class="close">Exit</button>
+            <button type='button' class="close">Exit</button>
             <p class="intro">Add a book:</p>
-            <label for="title">Title:
-                <input type="text" class="title">
+            <label for="title">Title (Capitalise first letter of individual words):
+                <input type="text" class="title" placeholder='One Piece'required>
             </label>
             <label for="author">Author:
-                <input type="text" class="author">
+                <input type="text" class="author" placeholder="Eiichiro Oda">
             </label>
             <label for="number-of-pages">Number of Pages:
                 <input type="number" class="number-of-pages">
@@ -48,16 +56,17 @@
             <label for="number-of-volumes">Number of Volumes:
                 <input type="number" class="number-of-volumes">
             </label>
-            <label for="read">Book status:
-                <select name="read" id="read">
-                    <option value="read">Read</option>
-                    <option value="unread">Not yet read</option>
+            <label for="status">Book status:
+                <select name="status" class="status">
+                    <option value="Unread">Unread</option>
+                    <option value="Read">Read</option>
                 </select>
             </label>
-            <label for="rating">Rating:
-                <input type="number" class="rating">
+            <label for="rating">Rating (1 - 10):
+                <input type="number" class="rating" placeholder="9.9" required>
             </label>
-            <button class="save">Save</button>
+            <p class="error"></p>
+            <button type="button" class="save">Save</button>
         </form>
     </dialog>
 </body>
