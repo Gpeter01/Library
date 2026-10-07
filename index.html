@@ -8,38 +8,46 @@
     <title>Library</title>
 </head>
 <body>
-    <h1>Library</h1>
-    <button class="add">Add Book</button>
-    <div class="flex-container">
-        <div class="flex-child harry-potter">
-            <div class="book-cover harry-potter"></div>
-            <div class="description">
-                <p class="book-title">Harry Potter</p>
-                <p>Author: J.K. Rowling</p>
-                <p>Number of pages: 4,100 pages</p>
-                <p>Number of volumes: 7</p>
-                <p>Rating: 9.5</p>
-                <p>Status: <b class="harry-potter">Read</b></p>
-                <button class="book-status harry-potter">Unread</button>
-                <p class="clarifier">(Click to change book status)</p>
-                <button class="delete harry-potter">Delete</button>
+    <div class="page-shell">
+        <header class="topbar">
+            <h1>Library</h1>
+            <button class="add">Add Book</button>
+        </header>
+
+        <main class="library-panel">
+            <div class="flex-container">
+                <div class="flex-child harry-potter">
+                    <div class="book-cover harry-potter"></div>
+                    <div class="description">
+                        <p class="book-title">Harry Potter</p>
+                        <p>Author: J.K. Rowling</p>
+                        <p>Number of pages: 4,100 pages</p>
+                        <p>Number of volumes: 7</p>
+                        <p>Rating: 9.5</p>
+                        <p>Status: <b class="harry-potter">Read</b></p>
+                        <button class="book-status harry-potter">Unread</button>
+                        <p class="clarifier">(Click to change book status)</p>
+                        <button class="delete harry-potter">Delete</button>
+                    </div>
+                </div>
+                <div class="flex-child erased">
+                    <div class="book-cover erased"></div>
+                    <div class="description">
+                        <p class="book-title">Erased</p>
+                        <p>Author: Kei Sanbe</p>
+                        <p>Number of pages: 1,760 pages</p>
+                        <p>Number of volumes: 8 </p>
+                        <p>Rating: 8.8</p>
+                        <p>Status: <b class="erased">Unread</b></p>
+                        <button class="book-status erased">Read</button>
+                        <p class="clarifier">(Click to change book status)</p>
+                        <button class="delete erased">Delete</button>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="flex-child erased">
-            <div class="book-cover erased"></div>
-            <div class="description">
-                <p class="book-title">Erased</p>
-                <p>Author: Kei Sanbe</p>
-                <p>Number of pages: 1,760 pages</p>
-                <p>Number of volumes: 8 </p>
-                <p>Rating: 8.8</p>
-                <p>Status: <b class="erased">Unread</b></p>
-                <button class="book-status erased">Unread</button>
-                <p class="clarifier">(Click to change book status)</p>
-                <button class="delete erased">Delete</button>
-            </div>
-        </div>
+        </main>
     </div>
+
     <dialog>
         <form>
             <button type='button' class="close">Exit</button>
